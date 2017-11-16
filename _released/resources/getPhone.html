@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>美月付</title>
+    <meta charset="utf-8">
+
+    <style>
+        body{color:#333;font-size:24px;font-family:Arial,sans-serif;-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:transparent}
+        .form-title{margin-top:20px;padding-left:30px;color:#4c5f70;font-size:24px}
+        .form-group{overflow:hidden;margin-top:20px;border-top:1px solid #eee;border-bottom:1px solid #eee;background-color:#fff;font-size:20px}
+        .form-item{overflow:hidden;white-space:nowrap;line-height:90px}
+        .form-item:first-child{border-top:none}
+        .form-item label{float:left;margin-left:30px;width:140px}
+        .form-item .item-body{position:relative;margin-left:200px;min-height:90px;border-bottom:1px solid #eee}
+        .form-submit{margin:.5rem .3rem}
+        .form-submit .btn-submit{width:100%;height:5pc;border:0;border-radius:6px;background-color:#00c3ad;color:#fff;font-weight:400;font-size:34px}
+
+    </style>
+</head>
+<body>
+<h5 class="form-title">获取用户手机号码-demo</h5>
+
+<div class="form-group">
+    <div class="form-item">
+        <label for="phone">手机号</label>
+        <div id="phone" class="item-body"></div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="form-item">
+        <pre id="mes"></pre>
+    </div>
+</div>
+<div class="form-submit"><a href="doc.html"><button class="btn-submit">返回文档</button></a></div>
+
+</body>
+<script src="http://cdn.bootcss.com/zepto/1.1.7/zepto.min.js"></script>
+<script src="getPhoneNum.js?201703251"></script>
+
+<script language="javascript">
+    var appId = "wozhitest";
+    var url = "http://quhao.meiyuefu.com/demo?appId="+appId;
+    $.get(url,function(obj){
+        $.getPhoneNum({
+            data:{
+                sign:obj,//服务器返回的签名;
+                appId:appId //分配到的id
+            },
+            success:function(data){
+                $("#phone").text(data.object.phone)
+            },
+            error:function(data){
+                $("#mes").text(JSON.stringify(data,null,2))
+            }
+        })
+    })
+
+</script>
+</html>

@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <a href="javascript:void(0)" ng-click="$dismiss('cancel')" class="modal-close"></a>
+    <h3 class="modal-title">复活用户</h3>
+</div>
+<form name="resurgenceForm" novalidate ng-submit="submit()">
+<div class="modal-body">
+    <div ng-if="status != '3002'">
+        <input type="text" class="form-control mr-s" style="display:inline-block;" ng-model="data.money" ng-required="true" placeholder="授信额度" maxlength="4"/>元<br />
+    </div>
+    <textarea class="form-modal mt-s" rows="5" ng-model="data.reason" jr-placeholder="其他理由补充说明,100个字以内" maxlength="100"></textarea>
+</div>
+<div class="modal-footer">
+    <span class="error-info">{{errorInfo}}</span>
+    <button class="btn btn-primary btn-submit" ng-disabled="resurgenceForm.$invalid" type="submit">复活</button>
+</div>
+</form>

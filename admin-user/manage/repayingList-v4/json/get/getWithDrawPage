@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "object": {
+    "infoList": [
+     {
+               "detailStatus": "20",
+                          "briefName": "函数-美月付公寓",
+              			"withDrawTime": "2017-04-20 22:10:10",
+              "money": "100",
+              "accountMoney": "100",
+              "detailStatusStr": "待审核",
+                          "detailId": "1",
+              "bankCardId": "59431405",
+                          "bankName": "招商银行",
+                          "companyId": "6",
+                          "ownerName": "陈立功",
+                          "branchBankName": "酒仙桥支行",
+                          "accountText": "6214000000000000"
+            },
+            {
+                                    "detailStatus": "20",
+                                               "briefName": "函数-美月付公寓",
+                                   			"withDrawTime": "2017-04-20 22:10:10",
+                                   "money": "100",
+                                   "accountMoney": "100",
+                                   "detailStatusStr": "待审核",
+                                               "detailId": "1",
+                                   "bankCardId": "59431405",
+                                               "bankName": "招商银行",
+                                               "companyId": "6",
+                                               "ownerName": "陈立功",
+                                               "branchBankName": "酒仙桥支行",
+                                               "accountText": "6214000000000000"
+                                               }
+    ],
+    "pageNum": 1,
+    "pageSize": 10,
+    "totalPage": 35,
+    "totalCount": 344,
+    "defaultPageNum": "10",
+    "__isset_bit_vector": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "resCode": "0"
+}

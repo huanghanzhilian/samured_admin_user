@@ -1,0 +1,144 @@
+<!--
+ - 用户信息Tab切换页面
+ -
+ - @author    Yang,junlong at 2015-10-14 14:28:57 build.
+ - @version:  $Id: userInfo.html 21047 2016-11-28 05:48:19Z zhangmiao03 $
+-->
+
+<tab heading="用户信息" id="riskWarning" select="userInfoInit()">
+    <div class="row coop-flag">
+        <div class="col-md-6">
+            <div class="tab-title">租客信息</div>
+            <table class="table table-style-1">
+                <tbody>
+                <tr>
+                    <td class="name-f">姓&nbsp;&nbsp;名</td>
+                    <td class="name-v">{{userInfo.userName}}</td>
+                    <td class="name-f">性&nbsp;&nbsp;别</td>
+                    <td class="name-v">{{userInfo.gender}}</td>
+                </tr>
+                <tr>
+                    <td class="name-f">手机号</td>
+                    <td class="name-v">{{userInfo.userPhone}}</td>
+                    <td class="name-f">身份证号</td>
+                    <td class="name-v">{{userInfo.idCard}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tab-title">房屋信息</div>
+            <table class="table table-style-1">
+                <tbody>
+                <tr>
+                    <td class="name-f">区&nbsp;&nbsp;域</td>
+                    <td class="name-v" colspan="3">{{userInfo.area}}</td>
+                </tr>
+                <tr>
+                    <td class="name-f">房屋地址</td>
+                    <td class="name-v" colspan="3">{{userInfo.houseAddress}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="tab-title">租金信息</div>
+            <table class="table table-style-1">
+                <tbody>
+                <tr>
+                    <td class="name-f">合同起始日</td>
+                    <td class="name-v">{{userInfo.contractBegin}}</td>
+                    <td class="name-f">合同终止日</td>
+                    <td class="name-v">{{userInfo.contractEnd}}</td>
+                </tr>
+                <tr>
+                    <td class="name-f">付款方式</td>
+                    <td class="name-v">{{userInfo.rentPayType}}</td>
+                    <td class="name-f">月租金</td>
+                    <td class="name-v">{{userInfo.monthRent}}</td>
+
+                </tr>
+                <tr>
+                    <td class="name-f">押金</td>
+                    <td class="name-v">{{userInfo.depositMoney}}</td>
+                    <td class="name-f">下次交租日</td>
+                    <td class="name-v">{{userInfo.rentStartDate}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tab-title">银行卡信息</div>
+            <table class="table table-style-1">
+                <tbody>
+                <tr>
+                    <td class="name-f">卡&nbsp;&nbsp;号</td>
+                    <td class="name-v">{{userInfo.account}}</td>
+                    <td class="name-f">预留手机号</td>
+                    <td class="name-v">{{userInfo.reservePhone}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="info-title">人脸识别与合同情况</div>
+            <div class="zf-group">
+                <a ng-repeat="item in userInfo.facePic" href="/static-mana/img.html?img={{item.oriUrl}}" target="_blank">
+                    <img width="150" height="200" ng-src="{{item.smallUrl}}"/>
+                </a>
+                <table class="table table-style-1">
+                    <tbody>
+                    <tr>
+                        <td class="name-f">状&nbsp;&nbsp;态</td>
+                        <td class="name-v">{{userInfo.facePass}}</td>
+                        <td class="name-f">匹配度</td>
+                        <td class="name-v">{{userInfo.faceSimilarity}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="zf-group">
+                <!--<p>-->
+                    <!--<span class="title">合同情况：</span>-->
+                <!--</p>-->
+                <a ng-repeat="item in userInfo.contractPic" href="/static-mana/img.html?img={{item.oriUrl}}" target="_blank">
+                    <img width="80" height="106" ng-src="{{item.smallUrl}}"/>
+                </a>
+                <table class="table table-style-1">
+                    <tbody>
+                    <tr>
+                        <td class="name-f">合同编号</td>
+                        <td class="name-v">{{userInfo.contractNo}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-title">管家信息</div>
+            <table class="table table-style-1">
+                <tbody>
+                <tr>
+                    <td class="name-f">管家姓名</td>
+                    <td class="name-v">{{userInfo.agentName}}</td>
+                    <td class="name-f">管家手机号</td>
+                    <td class="name-v">{{userInfo.agentPhone}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tab-title">公寓信息</div>
+            <table class="table table-style-1">
+                <tbody>
+                <tr>
+                    <td class="name-f">公寓注册名称</td>
+                    <td class="name-v" colspan="3">{{userInfo.compamyName}}</td>
+                </tr>
+                <tr>
+                    <td class="name-f">公寓简称</td>
+                    <td class="name-v">{{userInfo.briefName}}</td>
+                    <td class="name-f">法人姓名</td>
+                    <td class="name-v">{{userInfo.legalPersonName}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</tab>

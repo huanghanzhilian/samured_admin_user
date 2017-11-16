@@ -1,0 +1,66 @@
+<style >.time{color:#888}.modify-agent-info .modal-group{position:relative;margin-bottom:10px;height:32px}.modify-agent-info .modal-group label{width:90px;height:32px;line-height:32px;text-align:right;float:left}.modify-agent-info .modal-group .list-filter-col{margin-top:0;margin-left:10px}.modify-agent-info .modal-footer{text-align:center}.modify-agent-info .modal-footer .btn-submit,.modify-agent-info .modal-footer .btn-cancel{width:80px;height:30px}.modify-agent-info .modal-footer .btn-submit{margin-left:35px}.modify-agent-info .modal-footer .btn-cancel{background:#fafbfe;border:1px solid #acbfd9;margin-left:18px;color:#4c5379}.modify-agent-info .no-mpdify{background:#eee;color:#aaa}.modify-agent-info .data-info{width:178px;line-height:32px;margin-left:-10px}</style>
+<div class="block clearfix">
+    <form name="searchForm" novalidate ng-submit="search($event)">
+
+        <div class="list-filter-col">
+            <input type="text" class="form-control" ng-model="queryParams.companyKey"  jr-placeholder="公寓名称"  />
+        </div>
+
+        <div class="list-filter-col">
+            <jr-dropdown-button options="queryOptions.withDrawStatus" value="queryParams.withDrawStatus" class="w150"></jr-dropdown-button>
+        </div>
+        <div class="list-filter-col">
+            <jr-datepicker placeholder="提现时间" time="queryParams.withDrawStartTime"></jr-datepicker>
+        </div>
+        <div class="list-filter-col text">
+            到
+        </div>
+        <div class="list-filter-col">
+            <jr-datepicker placeholder="提现时间" time="queryParams.withDrawEndTime"></jr-datepicker>
+        </div>
+        <div class="pos-rb">
+            <div class="list-filter-col">
+                <button class="btn btn-primary" type="submit"><i class="icon icon-search"></i>查找</button>
+            </div>
+            <div class="list-filter-col">
+                <button class="btn btn-default" type="button" ng-click="clearParams()">清空查询项</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<table class="table">
+    <colgroup>       
+        <col width="80"/> <!-- 订单编号 -->
+    </colgroup>
+    <thead>
+        <tr>
+            <th>提现编号</th>
+            <th>公寓</th>
+            <th>提现金额(元)</th>
+            <th>提现后账户余额(元)</th>
+            <th>审核状态</th>
+            <th>提现申请时间</th>
+            <th ng-if="userInfo.roleId=='101'">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="order in orders.infoList">
+            <td>{{order.detailId}}</td>
+            <td>{{order.briefName}}</td>
+            <td>{{order.money}}</td>
+            <td>{{order.accountMoney}}</td>
+            <td>{{order.detailStatusStr}}</td>
+            <td><span class="time">{{order.withDrawTime}}</span></td>
+            <td class="opt" ng-if="userInfo.roleId=='101'">
+                <a href="javascript:;" ng-if="order.detailStatusStr=='待审核'"  ng-click="repayConfirm($event,order)" style="color: red;margin-right: 10px;">确认打款</a>
+                <a href="javascript:;" ng-if="order.detailStatusStr=='待审核'"  ng-click="refuse($event,order)">拒绝</a>
+            </td>
+            <!--<td></td>-->
+        </tr>
+    </tbody>
+</table>
+
+<pagination total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>
+<!--<ul jr-pagination total-items="orders.totalCount" page="orders.pageNum" items-per-page="orders.pageSize"></ul>-->

@@ -1,0 +1,48 @@
+<tab heading="黑名单验证" select="blackInit()">
+    <table class="table text-c break-all">
+        <col width="20%" />
+        <thead>
+            <tr>
+                <th>分类</th>
+                <th>审核内容</th>
+                <th>备注</th>
+                <th>审核结果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in black.checkList1">
+                <td>{{item.fromOrg}}</td>
+                <td>{{item.checkDesc}}</td>
+                <td>{{item.checkSrcValueStr}}</td>
+                <td title="{{item.checkValueStr}}">
+                    <i class="glyphicon glyphicon-ok-circle" ng-if="item.checkResult == 1"></i>
+                    <i class="glyphicon glyphicon-remove-circle" ng-if="item.checkResult == 0"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+   <!--  <h5>进件审核明细：</h5>
+   <table class="table text-c break-all">
+       <col width="20%" />
+       <thead>
+           <tr>
+               <th>分类</th>
+               <th>审核内容</th>
+               <th>备注</th>
+               <th>审核结果</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr ng-repeat="item in black.checkList2">
+               <td>{{item.fromOrg}}</td>
+               <td>{{item.checkDesc}}</td>
+               <td>{{item.checkSrcValueStr}}</td>
+               <td title="{{item.checkValueStr}}">
+                   <i class="glyphicon glyphicon-ok-circle" ng-if="item.checkResult == 1"></i>
+                   <i class="glyphicon glyphicon-remove-circle" ng-if="item.checkResult == 0"></i>
+               </td>
+           </tr>
+       </tbody>
+   </table> -->
+</tab>

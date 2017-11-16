@@ -1,0 +1,30 @@
+<tab class="reaudit-flag" heading="人工审核" select="reauditInit()" ng-if="tabData.reaudit" active="tabData.reauditPage">
+    <div class="row detail-main">
+        <div class="col-md-12">
+            <h4>系统日志</h4>
+            <table class="table clear-table">
+                <thead>
+                  <th></th>
+                  <th>时间</th>
+                  <th>审核人</th>
+                  <th>备注</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in menuTable.logTable">
+                        <td>{{item.fieldName}}</td>
+                        <td>{{item.fieldValue}}</td>
+                        <td>{{item.fieldExtra}}</td>
+                        <td>{{item.linkUrl}}</td>
+                    </tr>
+                </tbody>
+            </table>
+              <h3>批注：</h3>
+              <textarea class="form-control textarea" jr-placeholder="请填写审核的批注信息" id="rereasonwrite" ng-model="aduitmodal" rows="5"></textarea>
+              <div class="row mt">
+                <button ng-if="flagIndex !== '1'" class="btn btn-primary w-200" ng-click="reauditSubmit(1)">同意初审结果</button>
+                <button  ng-if="flagIndex !== '1'" class="btn ml-l w-200" ng-click="reauditSubmit(0)">驳回初审</button>
+                <button  ng-if="flagIndex !== '1'" class="btn ml-l w-200" ng-click="reauditQuit()">放弃复核</button>
+              </div>
+        </div>
+    </div>
+</tab>

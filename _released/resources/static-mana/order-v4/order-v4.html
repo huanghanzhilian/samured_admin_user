@@ -1,0 +1,66 @@
+<style >.time{color:#888}.mr-10{margin-right:10px}.active{color:#ff4d4d}.active span{color:#ff4d4d}.statData{margin-top:-10px;font-size:16px}.statData p{display:inline-block;margin-right:20px}.statData p.data-span{padding:4px 12px;border:1px solid rgba(0,0,0,.4);border-radius:5px;background-color:#FC6}.statData p.data-span span{font-size:20px;font-weight:700}.risk-warning{background-color:#FF0!important}.risk-warning td{background-color:#FF0!important}</style>
+<div>
+    <div class="block clearfix">
+        <form name="searchForm" novalidate ng-submit="search($event)">
+
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.userKey" jr-placeholder="租客姓名/手机号/订单编号" style="width:170px;" required/>
+            </div>
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.companyKey" jr-placeholder="推单公寓" style="width:100px;" required/>
+            </div>
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.cityKey" jr-placeholder="城市" required/>
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="申请时间" time="queryParams.beginCheckStartTime"></jr-datepicker>
+            </div>
+            <div class="list-filter-col text">
+                到
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="申请时间" time="queryParams.beginCheckEndTime"></jr-datepicker>
+            </div>
+            <div class="pos-rb">
+                <div class="list-filter-col">
+                    <button class="btn btn-primary" type="submit"><i class="icon icon-search"></i>查找</button>
+                </div>
+                <div class="list-filter-col">
+                    <button class="btn btn-default" type="button" ng-click="clearParams()">清空查询项</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <table class="table break-all">
+        <col width="40"/>
+        <thead>
+        <tr>
+            <th>订单编号</th>
+            <th>申请时间</th>
+            <th>租客姓名</th>
+            <th>城市-区域</th>
+            <th>月租金(元)</th>
+            <th>公寓名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <tr ng-repeat="order in orders.infoList track by $index" data-orderId="{{order.orderId}}" ng-class="{'active':order.superApartMontFlag==5, 'risk-warning': order.riskWarning==1}">
+
+            <td><a ng-href="#/order/{{order.orderId}}?flag=4" target="_blank">{{order.orderId}}</a></td>
+            <td><span class="time">{{order.beginCheckTime}}</span></td>
+            <td>{{order.userName}}</td>
+            <td>{{order.cityName}}-{{order.areaName}}</td>
+            <td>{{order.monthRent}}</td>
+
+            <td>{{order.companyName}}</td>
+            <td>
+                <a ng-href="#/order/{{order.orderId}}?flag=4" target="_blank">待审核</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<pagination total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>

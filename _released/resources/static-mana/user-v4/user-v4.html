@@ -1,0 +1,88 @@
+<style >.time{color:#888}</style>
+<div class="block clearfix">
+    <form name="searchForm" novalidate ng-submit="search($event)">
+
+        <div class="clearfix">
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.userKey" jr-placeholder="租客姓名/手机号/订单编号" style="width:170px;" required/>
+            </div>
+
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.agentKey" jr-placeholder="房管员姓名/手机号" style="width:130px;" required/>
+            </div>
+
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.companyKey" jr-placeholder="公寓名称" style="width:150px;" required/>
+            </div>
+
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="申请时间" time="queryParams.orderStartTime"></jr-datepicker>
+            </div>
+            <div class="list-filter-col text">
+                到
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="申请时间" time="queryParams.orderEndTime"></jr-datepicker>
+            </div>
+
+            <div class="list-filter-col">
+                <jr-dropdown-button options="queryOptions.orderStatus" value="queryParams.orderStatus" class="w120"></jr-dropdown-button>
+            </div>
+        </div>
+        <div class="pos-rb">
+            <div class="list-filter-col">
+                <button class="btn btn-primary" type="submit"><i class="icon icon-search"></i>查找</button>
+            </div>
+            <div class="list-filter-col">
+                <button class="btn btn-default" type="button" ng-click="clearParams()">清空查询项</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<table class="table">
+    <colgroup>
+        <col width="80">
+        <col width="100">
+        <col width="70">
+        <col width="100">
+        <col width="80">
+        <col width="100">
+        <col width="120">
+        <col width="150">
+        <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>订单编号</th>
+        <th>申请时间</th>
+
+        <th>租客姓名-手机号</th>
+        <th>月租金(元)</th>
+        <th>管家姓名</th>
+        <th>公寓名称</th>
+        <th>订单状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="order in orders.infoList">
+        <td><a ng-href="#/order/{{order.orderId}}?flag=1" target="_blank">{{order.orderId}}</a></td>
+        <td><span class="time">{{order.createTime}}</span></td>
+
+        <td>{{order.userName}}-{{order.userPhone}}</td>
+        <td>{{order.monthRent}}</td>
+        <td>{{order.agentName}}</td>
+        <td>{{order.companyName}}</td>
+        <td>{{order.orderStatusDesc}}</td>
+        <td>
+            <a ng-href="#/order/{{order.orderId}}" target="_blank">详情</a>
+         </td>
+    </tr>
+    </tbody>
+</table>
+
+<pagination total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>
+<!--<ul jr-pagination total-items="orders.totalCount" page="orders.pageNum" items-per-page="orders.pageSize"></ul>-->

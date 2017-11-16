@@ -1,0 +1,35 @@
+<tab class="audit-flag" heading="人工审核" select="auditInit()" ng-if="tabData.audit" active="tabData.auditPage">
+    <div class="row detail-main">
+        <div class="col-md-12">
+            <h4>系统日志</h4>
+            <table class="table clear-table">
+                <thead>
+                  <th>操作类型</th>
+                  <th>操作时间</th>
+                  <th>审核人</th>
+                  <th>备注</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in LogInfo">
+                        <td>{{item.checkDesc}}</td>
+                        <td>{{item.logTime}}</td>
+                        <td>{{item.checkMan}}</td>
+                        <td>{{item.checkMemo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="audit-confirm" ng-if="flagIndex !== '1'">
+              <h3>批注</h3>
+              <textarea class="form-control textarea" jr-placeholder="请填写审核的批注信息" ng-model="auditData.checkMemo" resize="none" rows="5"></textarea>
+              <div class="row mt">
+                <button  class="btn btn-primary w-200" ng-click="manualSubmit(1)">通过</button>
+                <button  class="btn ml-l w-200" ng-click="manualSubmit(0)">拒绝</button>
+                <button  class="btn ml-l w-200" ng-click="manualQuit()">放弃</button>
+              </div>
+            </div>
+        </div>
+        
+    </div>
+</tab>

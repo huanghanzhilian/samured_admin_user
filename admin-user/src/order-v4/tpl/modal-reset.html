@@ -1,0 +1,32 @@
+<div ng-click="clearCheckMan($event)">
+    <div class="modal-header">
+        <a href="javascript:void(0)" ng-click="$dismiss('cancel')" class="modal-close"></a>
+        <h3 class="modal-title">重置审核人</h3>
+    </div>
+    <form name="resetForm" novalidate class="modal-reset">
+        <div class="modal-body">
+
+            <div class="modal-group">
+                <label for="checkMan" >审核人：</label>
+                <div class="group-item ui-suggestion">
+                    <input type="text" name="checkMan" value="" autocomplete="off" ng-model="data.checkMan" ng-change="getCheckMan()"/>
+                    <div class="dropdown-tooltip" ng-if="checkManArr.length > 0" >
+                        <ul>
+                            <li ng-repeat="name in checkManArr" ng-click="selectCheckMan($event,name)" class="suggestion-item">
+                                <cite>{{name}}</cite>
+                            </li>
+                        </ul>
+                    </div>
+                <span class="error-info" ng-show="checkManFlag">
+                    <span>请选择正确的审核人</span>
+                </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-submit" ng-disabled="checkManFlag" ng-click="submit()">确定</button>
+            <button class="btn btn-primary btn-submit" ng-click="$dismiss('cancel')">取消</button>
+        </div>
+    </form>
+</div>

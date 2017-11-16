@@ -1,0 +1,30 @@
+<tab heading="借贷信息">
+    <div class="loan-info">
+        <table class="table break-all">
+            <thead>
+            <tr>
+                <th>债主公司代号</th>
+                <th>借款类型</th>
+                <th>借款状态</th>
+                <th>合同金额</th>
+                <th>还款状态</th>
+                <th>欠款金额</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in loanInfo">
+                <td>{{item.companyCode}}</td>
+                <td>{{item.borrowTypeForView}}</td>
+                <td>{{item.borrowStateForView}}</td>
+                <td>{{item.borrowAmountForView}}</td>
+                <td>{{item.repayStateForView}}</td>
+                <td>{{item.arrearsAmountForView}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="loading" ng-if="loan.flag"><span>加载中...</span></div>
+        <!--<div class="loading" ng-if="loan.noDataReturn"><span>暂无数据返回</span></div>-->
+        <!--<div class="loading" ng-if="loan.noInfo"><span>无借贷信息</span></div>-->
+    </div>
+</tab>
+

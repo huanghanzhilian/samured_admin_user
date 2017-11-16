@@ -1,0 +1,79 @@
+<tab heading="系统审核结果" id="riskWarning" select="blackInit()" disabled="applyInfo.checkStep < 5">
+    <!--<h4 ng-if="finalCheck.checkRes.checkDesc">审核结果：<span ng-class="{green: finalCheck.checkRes.checkResult == 1, red: finalCheck.checkRes.checkResult == 2}">{{finalCheck.checkRes.checkDesc}}</span></h4>-->
+    <h4>系统审核结果：系统终审通过</h4>
+    <tabset class="pb order-info double_info">
+        <tab heading="黑名单验证" select="blackInit()">
+    <table class="table text-c break-all">
+        <col width="20%" />
+        <thead>
+            <tr>
+                <th>分类</th>
+                <th>审核内容</th>
+                <th>备注</th>
+                <th>审核结果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in black.checkList1">
+                <td>{{item.fromOrg}}</td>
+                <td>{{item.checkDesc}}</td>
+                <td>{{item.checkSrcValueStr}}</td>
+                <td title="{{item.checkValueStr}}">
+                    <i class="glyphicon glyphicon-ok-circle" ng-if="item.checkResult == 1"></i>
+                    <i class="glyphicon glyphicon-remove-circle" ng-if="item.checkResult == 0"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+   <!--  <h5>进件审核明细：</h5>
+   <table class="table text-c break-all">
+       <col width="20%" />
+       <thead>
+           <tr>
+               <th>分类</th>
+               <th>审核内容</th>
+               <th>备注</th>
+               <th>审核结果</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr ng-repeat="item in black.checkList2">
+               <td>{{item.fromOrg}}</td>
+               <td>{{item.checkDesc}}</td>
+               <td>{{item.checkSrcValueStr}}</td>
+               <td title="{{item.checkValueStr}}">
+                   <i class="glyphicon glyphicon-ok-circle" ng-if="item.checkResult == 1"></i>
+                   <i class="glyphicon glyphicon-remove-circle" ng-if="item.checkResult == 0"></i>
+               </td>
+           </tr>
+       </tbody>
+   </table> -->
+</tab>
+        <tab heading="征信验证" id="riskWarning" select="creditInit()" disabled="applyInfo.checkStep < 2">
+    <table class="table text-c break-all">
+        <thead>
+            <tr>
+                <th>分类</th>
+                <th>征信参数</th>
+                <th>征信结果</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in credit.checkList" ng-class="{'active': item.checkResult==0 && item.dicItemGroup==101}">
+                <td>{{item.fromOrg}}</td>
+                <td>{{item.checkDesc}}</td>
+                <td ng-class="{red: item.checkResult == '0'}">{{item.checkValueStr}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <h4>征信验证批注</h4>
+    <textarea class="form-control textarea" ng-readonly="credit.readOnly" ng-model="credit.checkRes.checkMemo" placeholder="备注" rows="5"></textarea>
+    <div class="row text-c mt" ng-if="!credit.readOnly">
+        <button class="btn btn-primary w-200" ng-click="creditSubmit(1)">通过</button>
+        <button class="btn ml-l w-200" ng-click="creditSubmit(0)">不通过</button>
+    </div> -->
+</tab>
+    </tabset>
+
+</tab>

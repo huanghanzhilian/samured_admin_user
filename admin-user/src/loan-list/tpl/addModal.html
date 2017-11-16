@@ -1,0 +1,50 @@
+
+<div class="modal-header">
+    <a href="javascript:void(0)" ng-click="$dismiss('cancel')" class="modal-close"></a>
+    <h3 class="modal-title">您确定要打款么？</h3>
+</div>
+<form name="addAgentCompanyForm" novalidate  class="modify-agent-info" autocomplete="off">
+    <div class="modal-body">
+        <div class="modal-group">
+            <label>公寓：</label>
+            <div class="list-filter-col">
+                {{order.companyName}}
+            </div>
+
+        </div>
+        <div class="modal-group">
+            <label>账户名称：</label>
+            <div class="list-filter-col">
+                {{order.ownerName}}
+            </div>
+        </div>
+        <div class="modal-group ">
+            <label>银行卡号：</label>
+            <div class="list-filter-col">
+                {{order.accountText}}
+            </div>
+        </div>
+        <div class="modal-group ">
+            <label>银行名称：</label>
+            <div class="list-filter-col">
+                {{order.bankName}}
+            </div>
+        </div>
+        <div class="modal-group ">
+            <label>支行名称：</label>
+            <div class="list-filter-col">
+                {{order.branchBankName}}
+            </div>
+        </div>
+        <div class="modal-group ">
+            <label>金额：</label>
+            <div class="list-filter-col">
+                {{order.payAmount}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-submit" ng-click="submit()" type="submit">确定</button>
+        <button class="btn btn-primary btn-cancel" ng-click="$dismiss('cancel')" >取消</button>
+    </div>
+</form>

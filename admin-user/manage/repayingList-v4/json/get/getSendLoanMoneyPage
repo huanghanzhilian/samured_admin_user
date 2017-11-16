@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "object": {
+    "infoList": [
+     {
+                "period": "1",
+    "totalPeriods": "4",
+                "payDate": "2017-04-16",
+                "payAmount": 2600,
+                "payStatusStr": "打款中",
+    "realPayDate": "2017-04-16",
+    "ownerName": "张三",
+                "accountText": "11011111111111",
+    			"bankName": "招商银行",
+    			"branchBankName": "望京支行",
+                "companyName": "函数-美月付公寓",
+                "userName": "王立伟",
+                "payStatus": "2",
+    			"payCheckId": "6",
+    "companyId": "6",
+    "orderId": "1031"
+            },
+            {
+                            "period": "1",
+                "totalPeriods": "4",
+                            "payDate": "2017-04-16",
+                            "payAmount": 2600,
+                            "payStatusStr": "打款中",
+                "realPayDate": "2017-04-16",
+                "ownerName": "张三",
+                            "accountText": "11011111111111",
+                			"bankName": "招商银行",
+                			"branchBankName": "望京支行",
+                            "companyName": "函数-美月付公寓",
+                            "userName": "王立伟",
+                            "payStatus": "0",
+                			"payCheckId": "6",
+                "companyId": "6",
+                "orderId": "1031"
+                        }
+    ],
+    "pageNum": 1,
+    "pageSize": 10,
+    "totalPage": 35,
+    "totalCount": 344,
+    "defaultPageNum": "10",
+    "__isset_bit_vector": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "resCode": "0"
+}

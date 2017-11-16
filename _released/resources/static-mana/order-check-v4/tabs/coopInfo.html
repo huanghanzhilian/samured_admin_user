@@ -1,0 +1,85 @@
+<!--
+ - 合作单位信息Tab切换页面 
+ -
+ - @author    Yang,junlong at 2015-10-14 14:30:04 build.
+ - @version:  $Id: coopInfo.html 17134 2016-08-08 10:19:19Z zhangmiao03 $
+-->
+
+<tab class="tab-coop-flag" heading="合作单位信息" select="coopInfoInit()">
+<div class="row coop-flag">
+    <div class="col-md-5">
+		<div class="info-title">企业信息</div>
+		<div class="info-group group1 clearfix">
+			<p><span class="field">企业名称：</span><span>{{coopInfo.companyTable.briefName}}</span></p>
+			<p><span class="field">企业注册名称：</span><span>{{coopInfo.companyTable.companyName}}</span></p>
+			<p><span class="field">法&nbsp;&nbsp;人：</span><span>{{coopInfo.companyTable.legalPersonName}}</span></p>
+			<p><span class="field">法人身份证号：</span><span>{{coopInfo.companyTable.legalPersonIdCard}}</span></p>
+			<p><span class="field">企业联系方式：</span><span>{{coopInfo.companyTable.legalPersonPhone}}</span></p>
+		</div>
+
+		<div class="info-title">收租账户信息</div>
+		<div class="info-group group1 clearfix">
+			<p><span class="field">姓名：</span><span>{{coopInfo.bankCardInfo.ownerName}}</span></p>
+			<p><span class="field">预留手机号：</span><span>{{coopInfo.bankCardInfo.reservePhone}}</span></p>
+			<p><span class="field">银行卡号：</span><span>{{coopInfo.bankCardInfo.accountText}}</span></p>
+			<p><span class="field">开户行：</span><span>{{coopInfo.bankCardInfo.bankName}}</span></p>
+			<p><span class="field">所在地：</span><span>{{coopInfo.bankCardInfo.city}}</span></p>
+		</div>
+		<div class="info-title">代扣账户信息</div>
+		<div class="info-group group1 clearfix">
+			<p><span class="field">姓名：</span><span>{{coopInfo.chargeBankCardInfo.ownerName}}</span></p>
+			<p><span class="field">预留手机号：</span><span>{{coopInfo.chargeBankCardInfo.reservePhone}}</span></p>
+			<p><span class="field">银行卡号：</span><span>{{coopInfo.chargeBankCardInfo.accountText}}</span></p>
+			<p><span class="field">开户行：</span><span>{{coopInfo.chargeBankCardInfo.bankName}}</span></p>
+			<p><span class="field">所在地：</span><span>{{coopInfo.chargeBankCardInfo.city}}</span></p>
+		</div>
+		<div class="info-title">房管员信息</div>
+		<div class="info-group group1 clearfix">
+			<p><span class="field">姓名：</span><span>{{coopInfo.agentInfo.agentName}}</span></p>
+			<p><span class="field">联系方式：</span><span>{{coopInfo.agentInfo.agentPhone}}</span></p>
+			<p><span class="field">身份证号：</span><span>{{coopInfo.agentInfo.agentIdCard}}</span></p>
+			<p><span class="field">58账号：</span><span>{{coopInfo.agentInfo.wbUserName}}</span></p>
+			<p><span class="field">分店：</span><span>{{coopInfo.agentInfo.childCompany}}</span></p>
+			<p><span class="field">状态：</span><span>{{coopInfo.agentInfo.workStatus}}</span></p>
+		</div>
+    </div>
+    <div class="col-md-7">
+		<div class="info-title">租房信息监控</div>
+		
+		<div class="zf-group">
+		<p>
+			<span class="title">资金情况：</span>
+			<span class="prog-bar">
+				<span style="width:{{fundProg}}%;"></span>
+			</span>
+			<span>{{coopInfo.financeCondition.zjqk}}</span>
+		</p>
+		<table class="table table-style-1">
+			
+            <tbody>
+                <tr ng-repeat="item in coopInfo.rentHouseMonitorTable">
+                    <td class="name-f">{{item.fieldName}}</td>
+                    <td class="name-v">{{item.fieldValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+		
+		<div class="zf-group">
+		<p>
+			<span class="title">租房情况：</span>
+		</p>
+		<table class="table table-style-1">
+			
+            <tbody>
+                <tr ng-repeat="item in coopInfo.rentSituationTable">
+                    <td class="name-f">{{item.fieldName}}</td>
+                    <td class="name-v">{{item.fieldValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+
+    </div>
+</div>
+</tab>
