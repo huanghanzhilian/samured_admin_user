@@ -4,13 +4,13 @@
  */
 
 //define(['angular', 'angular-couch-potato', 'angular-ui-router', 'angular-upload-file', 'angular-ui-bootstrap', 'angular-loading-bar','angular-multi-select', 'angular-ui-grid'], function(angular, couchPotato) {
-define(['angular', 'angular-couch-potato', 'angular-ui-router', 'angular-upload-file', 'angular-ui-bootstrap', 'angular-uib-bootstrap','angular-loading-bar','angular-multi-select'], function(angular, couchPotato) {
+define(['angular', 'angular-couch-potato', 'angular-ui-router', 'angular-upload-file', 'angular-ui-bootstrap', 'angular-uib-bootstrap', 'angular-loading-bar', 'angular-multi-select'], function(angular, couchPotato) {
 
     //定义angular模块
     //var app = angular.module('app', ['scs.couch-potato', 'ui.router', 'ui.bootstrap', 'ui.bootstrap.tpls', 'chieffancypants.loadingBar', 'angularFileUpload','isteven-multi-select', 'ui.grid','ui.grid.resizeColumns']);
-    var app = angular.module('app', ['scs.couch-potato', 'ui.router', 'ui.bootstrap', 'ui.bootstrap.tpls', 'uib.bootstrap', 'uib.bootstrap.tpls','chieffancypants.loadingBar', 'angularFileUpload','isteven-multi-select']);
+    var app = angular.module('app', ['scs.couch-potato', 'ui.router', 'ui.bootstrap', 'ui.bootstrap.tpls', 'uib.bootstrap', 'uib.bootstrap.tpls', 'chieffancypants.loadingBar', 'angularFileUpload', 'isteven-multi-select']);
     // angular-ui-bootstrap datepicker config
-    app.config(['datepickerConfig', 'datepickerPopupConfig', 'uibDatepickerPopupConfig', 'paginationConfig','cfpLoadingBarProvider',
+    app.config(['datepickerConfig', 'datepickerPopupConfig', 'uibDatepickerPopupConfig', 'paginationConfig', 'cfpLoadingBarProvider',
         function(datepickerConfig, datepickerPopupConfig, uibDatepickerPopupConfig, paginationConfig, cfpLoadingBarProvider) {
             // ui-bootstrap datepicker global config
             datepickerConfig.showWeeks = false;
@@ -41,7 +41,8 @@ define(['angular', 'angular-couch-potato', 'angular-ui-router', 'angular-upload-
             //cfpLoadingBarProvider.spinnerTemplate = '<div class="modal-backdrop in loading-spinner"><span class="fa fa-spinner">Loading...</span></div>';
 
 
-        }]);
+        }
+    ]);
 
 
     //couchPotato托管app，负责lazyload

@@ -4,11 +4,6 @@
  * 路由完全有前端控制，此处配置**路由**
  */
 define(['app'], function(app) {
-
-    /**
-     * register `routeDefs`
-     *
-     */
     app.registerProvider('routeDefs', [
         '$stateProvider',
         '$urlRouterProvider',
@@ -28,11 +23,11 @@ define(['app'], function(app) {
 
             // 清退对账
             $stateProvider.state('welcome', {
-                url: '/welcome',
-                templateUrl: function(stateParams){
-                    return '/admin-user/welcome/welcome.html';
-                }
-            })
+                    url: '/welcome',
+                    templateUrl: function(stateParams) {
+                        return '/admin-user/welcome/welcome.html';
+                    }
+                })
 
                 //上传视频
                 .state('videoUpload', {
@@ -45,6 +40,21 @@ define(['app'], function(app) {
                     controller: 'CtrlvideoUploadV1',
                     resolve: {
                         ctrl: $couchPotatoProvider.resolveDependencies(['/admin-user/videoUpload-v1/CtrlvideoUploadV1.js'])
+                    }
+                })
+
+
+                //视频管理
+                .state('videoManagement', {
+                    url: '/videoManagement',
+                    abstract: true,
+                    templateUrl: emptyTplInherit
+                }).state('videoManagement.list', {
+                    url: '?pageNum',
+                    templateUrl: '/admin-user/videoManagement-v1/videoManagement-v1.html',
+                    controller: 'CtrlvideoManagementV1',
+                    resolve: {
+                        ctrl: $couchPotatoProvider.resolveDependencies(['/admin-user/videoManagement-v1/CtrlvideoManagementV1.js'])
                     }
                 })
 

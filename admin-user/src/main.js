@@ -1,24 +1,24 @@
 require.config({
-    waitSeconds : 0,
+    waitSeconds: 0,
     baseUrl: '/admin-user/',
     paths: {
         'angular': 'dep/angularjs_1.5/angular',
         'angular-ui-router': 'dep/angular-ui-router_0.2.15/angular-ui-router.min',
         'angular-ui-bootstrap': 'dep/angular-bootstrap_0.10.0/ui-bootstrap-tpls',
         'angular-uib-bootstrap': 'dep/angular-bootstrap_2.1.2/ui-bootstrap-tpls-2.1.2',
-        'angular-couch-potato': 'dep/angular-couch-potato_0.1.1/angular-couch-potato.min',//按需加载
-        'angular-loading-bar': 'dep/angular-loading-bar_0.6.0/loading-bar.min',//进度条
-        'angular-upload-file':'dep/angular-upload-file/angular-file-upload.min',//上传文件插件
-        'angular-multi-select': 'dep/angular-multi-select/isteven-multi-select',//二级下拉联动
-        'echarts' : 'dep/echarts_3.0/echarts.min',
-        'echarts/chart/pie' : 'dep/echarts_2.0.4/echarts',
-        'echarts/chart/funnel' : 'dep/echarts_2.0.4/echarts',
-        'echarts/chart/line' : 'dep/echarts_2.0.4/echarts',
-        'echarts/chart/bar' : 'dep/echarts_2.0.4/echarts',
-        'echarts/chart/gauge' : 'dep/echarts_2.0.4/echarts',
-        'echarts/chart/china' : 'dep/echarts_3.0/china',
-        'echarts/theme/macarons' : 'dep/echarts-theme/macarons.min',
-        'echarts/theme/blue' : 'dep/echarts-theme/macarons.min',
+        'angular-couch-potato': 'dep/angular-couch-potato_0.1.1/angular-couch-potato.min', //按需加载
+        'angular-loading-bar': 'dep/angular-loading-bar_0.6.0/loading-bar.min', //进度条
+        'angular-upload-file': 'dep/angular-upload-file/angular-file-upload.min', //上传文件插件
+        'angular-multi-select': 'dep/angular-multi-select/isteven-multi-select', //二级下拉联动
+        'echarts': 'dep/echarts_3.0/echarts.min',
+        'echarts/chart/pie': 'dep/echarts_2.0.4/echarts',
+        'echarts/chart/funnel': 'dep/echarts_2.0.4/echarts',
+        'echarts/chart/line': 'dep/echarts_2.0.4/echarts',
+        'echarts/chart/bar': 'dep/echarts_2.0.4/echarts',
+        'echarts/chart/gauge': 'dep/echarts_2.0.4/echarts',
+        'echarts/chart/china': 'dep/echarts_3.0/china',
+        'echarts/theme/macarons': 'dep/echarts-theme/macarons.min',
+        'echarts/theme/blue': 'dep/echarts-theme/macarons.min',
         //'angular-ui-grid': 'dep/angular-ui-grid/ui-grid',
         'directive': '_directive',
         'filter': '_filter',
@@ -31,7 +31,7 @@ require.config({
             exports: 'angular'
         },
         'angular-couch-potato': {
-            deps:['angular']
+            deps: ['angular']
         },
         'angular-ui-router': {
             deps: ['angular']
@@ -45,7 +45,7 @@ require.config({
         'angular-loading-bar': {
             deps: ['angular']
         },
-        'angular-upload-file':{
+        'angular-upload-file': {
             deps: ['angular']
         },
         'angular-multi-select': {

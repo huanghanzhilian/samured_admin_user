@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="videoManagement-v1.less?__inline" />
+<div class="videoManagement_container">
+    <div class="block clearfix">
+        <form name="searchForm" novalidate ng-submit="search($event)">
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.userKey" style="width: 150px;" jr-placeholder="视频名称" />
+            </div>
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.agentKey" jr-placeholder="视频ID" />
+            </div>
+            <!-- <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.companyKey" jr-placeholder="" />
+            </div> -->
+            <div class="list-filter-col">
+                <jr-dropdown-button options="queryOptions.orderStatus" value="queryParams.orderStatus" class="w150"></jr-dropdown-button>
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="清退时间" time="queryParams.qingtuiStartTime" style="width: 140px;"></jr-datepicker>
+            </div>
+            <div class="list-filter-col text">
+                到
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="清退时间" time="queryParams.qingtuiEndTime" style="width: 140px;"></jr-datepicker>
+            </div>
+            <div class="pos-rb">
+                <div class="list-filter-col">
+                    <button class="btn btn-primary" type="submit"><i class="icon icon-search"></i>查找</button>
+                </div>
+                <div class="list-filter-col">
+                    <button class="btn btn-default" type="button" ng-click="clearParams()">清空查询项</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -12,7 +12,7 @@ define(['app'], function(app) {
             // var msie = getInternetExplorerVersion();
             return {
                 'request': function(config) {
-                    if (config.method === 'GET' && config.url && !/^template\//.test(config.url)&&!/^uib\/template\//.test(config.url)) {
+                    if (config.method === 'GET' && config.url && !/^template\//.test(config.url) && !/^uib\/template\//.test(config.url)) {
                         config.params = config.params || {};
                         // 自定义的html模板和js增加版本戳
                         if (/\.js$|\.html$/.test(config.url)) {
@@ -76,11 +76,11 @@ define(['app'], function(app) {
         function modalAlert(message) {
             $('.http-modal, .http-modal-backdrop').off().remove();
             var $modal = $(
-                    '<div tabindex="-1" class="http-modal modal fade ngAlert in" ng-class="{in: animate}" style="z-index: 1050; display: block;">' +
-                    '<div class="modal-dialog"><div class="modal-content">' +
-                    '<div class=\"modal-header\">\r\n    <a href=\"javascript:void(0)\" class=\"modal-close\"></a>\r\n    <h3 class=\"modal-title\">错误信息</h3>\r\n</div>\r\n<div class=\"modal-body\">'+message+'</div>\r\n<div class=\"modal-footer\">\r\n    <button class=\"btn btn-primary\">确定</button>\r\n</div>' +
-                    '</div></div>' +
-                    '</div>');
+                '<div tabindex="-1" class="http-modal modal fade ngAlert in" ng-class="{in: animate}" style="z-index: 1050; display: block;">' +
+                '<div class="modal-dialog"><div class="modal-content">' +
+                '<div class=\"modal-header\">\r\n    <a href=\"javascript:void(0)\" class=\"modal-close\"></a>\r\n    <h3 class=\"modal-title\">错误信息</h3>\r\n</div>\r\n<div class=\"modal-body\">' + message + '</div>\r\n<div class=\"modal-footer\">\r\n    <button class=\"btn btn-primary\">确定</button>\r\n</div>' +
+                '</div></div>' +
+                '</div>');
             var $backdrop = $('<div class="modal-backdrop http-modal-backdrop in" style="z-index: 1040;"></div>');
             $modal.appendTo($('body'));
             $backdrop.appendTo($("body"));

@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <!-- $Id: index.html 22321 2017-01-10 03:25:00Z caoke $ -->
-    <head>
-        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-        <title>用户后台 - SAMURED</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- $Id: index.html 22321 2017-01-10 03:25:00Z caoke $ -->
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="_common/img/favicon.ico" />
-        <link rel="stylesheet" href="../dep/bootstrap_3.3.4/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="_common/common.less?${__version__}"/>
-        <!--[if lt IE 9]>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>用户后台 - SAMURED</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="_common/img/favicon.ico" />
+    <link rel="stylesheet" href="../dep/bootstrap_3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="_common/common.less?${__version__}" />
+    <!--[if lt IE 9]>
         <script src="../dep/es5-shim/es5-shim.min.js"></script>
         <script src="../dep/es5-sham/es5-sham.min.js"></script>
         <![endif]-->
-        <script src="_common/libs/require.js/2.1.11/require.js"></script>
-        <script src="_common/libs/jquery/1.10.2/jquery.js"></script>
-        <script src="_service/md5.js"></script>
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
+    <script src="_common/libs/require.js/2.1.11/require.js"></script>
+    <script src="_common/libs/jquery/1.10.2/jquery.js"></script>
+    <script src="_service/md5.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
             <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
             <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
             <script src="_directive/directive-ie.js?${__version__}"></script>
         <![endif]-->
-    </head>
-    <body ng-controller="CtrlApp">
-    <div class="vacation-info vacation-chorme" ng-show="vacation" style="display: none;"><i></i>本平台仅适用于chrome浏览器，为了保证您的正常使用，请您下载chrome浏览器。<a class="close" href="javascript:;" ng-click="vacation=false">X</a></div>
-     <div class="body">
-        <div class="g-sd1">
+</head>
 
-               <div class="toplogo">
-                   <a href="javascript:void(0);" target="_blank" title="月付后台-{{userInfo.companyName}}"id="top-logo">
+<body ng-controller="CtrlApp">
+    <div class="vacation-info vacation-chorme" ng-show="vacation" style="display: none;"><i></i>本平台仅适用于chrome浏览器，为了保证您的正常使用，请您下载chrome浏览器。<a class="close" href="javascript:;" ng-click="vacation=false">X</a></div>
+    <div class="body">
+        <div class="g-sd1">
+            <div class="toplogo">
+                <a href="javascript:void(0);" target="_blank" title="月付后台-{{userInfo.companyName}}" id="top-logo">
                        <img ng-src="{{userInfo.companyLogo||'/admin-user/_common/nimg/logo-w.png?${__version__}'}}" class="logo" alt="logo"  />
                        <div class="logo-txt">用户管理系统</div>
                    </a>
-               </div>
-
+            </div>
             <ul class="side " id="side">
                 <!-- <li class="expand">
                     <a ng-show="canAccess(',user,') || canAccess(',user/normal,') || canAccess(',user/overdue,') || canAccess(',user/clean,')" class="dpdtoggle" href="#/user?type=1">
@@ -59,10 +58,10 @@
                 </li> -->
                 <li class="expand">
                     <ul class="submenu">
-                        <li ng-if="canAccess(',videoUpload,')"  ng-class="{active: $state.includes('videoUpload.list')}"><a href="#/videoUpload" >视频上传</a></li>
-                        <li ng-if="canAccess(',withDraw,')"  ng-class="{active: $state.includes('withDraw.list')}"><a href="#/withDraw" >视频管理</a></li>
-                        <li ng-if="canAccess(',repayingList,')"  ng-class="{active: $state.includes('repayingList.list')}"><a href="#/repayingList" >专辑管理</a></li>
-                        <li ng-if="canAccess(',loanList,')"  ng-class="{active: $state.includes('loanList.list')}"><a href="#/loanList" >频道管理</a></li>
+                        <li ng-if="canAccess(',videoUpload,')" ng-class="{active: $state.includes('videoUpload.list')}"><a href="#/videoUpload">视频上传</a></li>
+                        <li ng-if="canAccess(',videoManagement,')" ng-class="{active: $state.includes('videoManagement.list')}"><a href="#/videoManagement">视频管理</a></li>
+                        <li ng-if="canAccess(',repayingList,')" ng-class="{active: $state.includes('repayingList.list')}"><a href="#/repayingList">专辑管理</a></li>
+                        <li ng-if="canAccess(',loanList,')" ng-class="{active: $state.includes('loanList.list')}"><a href="#/loanList">频道管理</a></li>
                     </ul>
                 </li>
             </ul>
@@ -77,16 +76,17 @@
             </div>
         </div>
         <div class="loading" ng-if="loading">loading……</div>
-     </div>
-        <script>
-            var jrVersionStr = '${__version__}';
-            require.config({
-                urlArgs: jrVersionStr
-            });
-            //统计
-            var _czc=[]
-            _czc.logSend=function(){}
-        </script>
-        <script src="main.js?${__version__}"></script>
-   </body>
+    </div>
+    <script>
+    var jrVersionStr = '${__version__}';
+    require.config({
+        urlArgs: jrVersionStr
+    });
+    //统计
+    var _czc = []
+    _czc.logSend = function() {}
+    </script>
+    <script src="main.js?${__version__}"></script>
+</body>
+
 </html>

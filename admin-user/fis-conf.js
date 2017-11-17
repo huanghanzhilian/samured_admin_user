@@ -66,6 +66,10 @@ fis.config.merge({
                  release: isPublish?false:'/manage/$1'
             },
             {
+                 reg: /^\/api\/(.*)/i,
+                 release: isPublish?false:'/api/$1'
+            },
+            {
                 reg: /^\/src\/index\.html$/i,
                 release: '${pagePrePath}/index.html'
             },

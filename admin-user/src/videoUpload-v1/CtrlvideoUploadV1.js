@@ -16,77 +16,70 @@ define([
     'directive/jrDropdownButton',
     'directive/jrPlaceholder',
     'angular-upload-file',
-    'directive/ngThumb'
+    'directive/ngThumb',
+    'directive/fileModel',
 ], function(app, citiesModule) {
     app.registerController('CtrlvideoUploadV1', ['$scope', '$rootScope', '$http', '$modal', '$stateParams', '$filter', '$state', '$sce', 'FileUploader', 'FileItem', '$timeout',
         function($scope, $rootScope, $http, $modal, $stateParams, $filter, $state, $sce, FileUploader, FileItem, $timeout) {
 
             //赛选
-            /*$scope.queryOptions = {
+            $scope.queryOptions = {
                 videolebel: [{
                     value: "0",
                     name: '--请选择--',
-                    data:[{
+                    data: [{
                         value: "0",
                         name: '--请选择--',
                     }]
                 }, {
                     value: '1',
                     name: '宣传片',
-                    data:[{
+                    data: [{
                         value: "0",
                         name: '--请选择--',
-                    },{
+                    }, {
                         value: "1",
                         name: '宣传片11',
-                    },{
+                    }, {
                         value: "2",
                         name: '宣传片22',
                     }]
                 }, {
                     value: '2',
                     name: '大型活动',
-                    data:[{
+                    data: [{
                         value: "0",
                         name: '--请选择--',
-                    },{
+                    }, {
                         value: "1",
                         name: '大型活动11',
-                    },{
+                    }, {
                         value: "2",
                         name: '大型活动22',
                     }]
                 }, {
                     value: '3',
                     name: '评测',
-                    data:[{
+                    data: [{
                         value: "0",
                         name: '--请选择--',
-                    },{
+                    }, {
                         value: "1",
                         name: '评测11',
-                    },{
+                    }, {
                         value: "2",
                         name: '评测22',
                     }]
                 }],
-                videoStatus:[
-                    {value: '1', name: '正常'},
-                    {value: '2', name: '待审核'},
-                    {value: '3', name: '已下架'}
-                ],
-                companyProvinceCode:citiesModule.get_provinces_from_dict(),
-                companyCityCode:citiesModule.get_cities_by_code_from_dict("110000"),
-                provinceCode:citiesModule.get_provinces_from_dict(),
-                cityCode:citiesModule.get_cities_by_code_from_dict("110000")
-            };*/
-            $scope.names=[];
+
+            };
+            $scope.names = [];
             //获取二级筛选
-            $scope.get_tab=function(val){
-                var obj=$scope.queryOptions.videolebel;
+            $scope.get_tab = function(val) {
+                var obj = $scope.queryOptions.videolebel;
                 for (var i = 0; i < obj.length; i++) {
-                    if(obj[i].value==val){
-                        $scope.df=obj[i].data;
+                    if (obj[i].value == val) {
+                        $scope.df = obj[i].data;
                         console.log(obj[i].data)
                     }
                 }
@@ -107,14 +100,30 @@ define([
                     return this.queue.length < 10;
                 }
             });*/
-            $scope.fileNameChanged=function(q){
+            $scope.fileNameChanged = function(q) {
                 //console.log($scope.uploader.queue)
                 //console.dir(q.files.length)
             }
+            $scope.dataRemove = function(index) {
+                console.log(index)
+                $scope.names.splice(index, 1);
+            }
 
 
-            $scope.$watch('uploaderApy', function(Val, nVal) {
-                //console.log(Val)
+            $scope.$watch('fileToUpload', function(Val, nVal) {
+                if (Val != undefined) {
+                    for (var i = 0; i < Val.length; i++) {
+                        var files = Val[i]
+                        var arr = { saixuan: $scope.queryOptions.videolebel, videoName: Val[i].name.replace(/(.avi|.mov|.mp4)$/, '') };
+                        var obj = { files: files, arr: arr }
+                        $scope.names.push(obj);
+                        console.log($scope.names)
+                    }
+                    //console.log(Val[0])
+                    // console.log(Val instanceof Object)
+                    //$scope.names.push(Val);
+                }
+
             });
 
 
