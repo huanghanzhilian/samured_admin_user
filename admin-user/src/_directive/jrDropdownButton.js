@@ -4,29 +4,28 @@
  * @author yuebin
  */
 
-define(['app'], function (app) {
-    app.registerDirective('jrDropdownButton', [function () {
+define(['app'], function(app) {
+    app.registerDirective('jrDropdownButton', [function() {
         return {
             restrict: 'E',
             replace: true,
             template: __inline('tpl/jrDropdownButton.html'),
             scope: {
-                theme: '@',
-                options: '=',
-                selected: '=',
-                value: '=',
-                disabled: '='
+                theme: '@', //主题
+                options: '=', //选项数据
+                selected: '=', //选中
+                value: '=', //选项值
+                disabled: '=' //禁用
             },
             link: function($scope, iElement, iAttrs) {
-                console.log($scope)
-                 // 监听options变量，为那些ajax加载的下拉菜单做补救
-                 $scope.$watch('options', function() {
-                    console.log(1)
+
+                // 监听options变量，为那些ajax加载的下拉菜单做补救
+                $scope.$watch('options', function() {
                     // 如果供显示的选中项依然为空,则遍历查找选中项
                     setDisplayName($scope);
-                 });
+                });
 
-                // // 初始化显示值
+                // 初始化显示值
                 setDisplayName($scope);
 
                 /**
@@ -39,17 +38,17 @@ define(['app'], function (app) {
                     if (_displayName === $scope.displayName) {
                         return false;
                     }
-                    
+
                     setSelected($scope, iAttrs, option);
                 };
 
 
                 //监听外部方式改变下拉框的值（例如清空查询项操作）
                 $scope.$watch('value', function(newValue) {
-                    if(newValue === undefined) {
+                    if (newValue === undefined) {
                         newValue = '';
                     }
-                    if($scope.options) {
+                    if ($scope.options) {
                         for (var i = 0; i < $scope.options.length; i++) {
                             if ($scope.options[i].value === newValue) {
                                 $scope.displayName = $scope.options[i].name;
@@ -66,10 +65,10 @@ define(['app'], function (app) {
          * @param {object} $scope 实例独立scope
          */
         function setDisplayName($scope) {
-            if ($scope.selected) {
-                $scope.displayName = $scope.selected.name || $scope.selected;
-            } else if ($scope.options){
-                if ($scope.value){
+            if ($scope.selected) { //如果默认值为真
+                $scope.displayName = $scope.selected.name || $scope.selected; //显示的名字等于选择的name
+            } else if ($scope.options) {
+                if ($scope.value) {
                     for (var i = 0; i < $scope.options.length; i++) {
                         if ($scope.options[i].value === $scope.value) {
                             $scope.displayName = $scope.options[i].name;
@@ -78,7 +77,7 @@ define(['app'], function (app) {
                 } else {
                     $scope.displayName = $scope.options[0].name || $scope.options[0];
 
-                    if(typeof $scope.options[0].value === 'undefined') {
+                    if (typeof $scope.options[0].value === 'undefined') {
                         $scope.value = $scope.options[0];
                     } else {
                         $scope.value = $scope.options[0].value;

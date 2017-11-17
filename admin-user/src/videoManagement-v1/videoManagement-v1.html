@@ -15,13 +15,13 @@
                 <jr-dropdown-button options="queryOptions.orderStatus" value="queryParams.orderStatus" class="w150"></jr-dropdown-button>
             </div>
             <div class="list-filter-col">
-                <jr-datepicker placeholder="清退时间" time="queryParams.qingtuiStartTime" style="width: 140px;"></jr-datepicker>
+                <jr-datepicker placeholder="发布时间" time="queryParams.qingtuiStartTime" style="width: 140px;"></jr-datepicker>
             </div>
             <div class="list-filter-col text">
                 到
             </div>
             <div class="list-filter-col">
-                <jr-datepicker placeholder="清退时间" time="queryParams.qingtuiEndTime" style="width: 140px;"></jr-datepicker>
+                <jr-datepicker placeholder="发布时间" time="queryParams.qingtuiEndTime" style="width: 140px;"></jr-datepicker>
             </div>
             <div class="pos-rb">
                 <div class="list-filter-col">
@@ -33,4 +33,46 @@
             </div>
         </form>
     </div>
+    <table class="table">
+        <colgroup>
+            <col width="80" />
+            <!-- 订单编号 -->
+        </colgroup>
+        <thead>
+            <tr>
+                <th>订单编号</th>
+                <th>清退时间</th>
+                <th>租客姓名-手机号</th>
+                <th>租金总额(元)</th>
+                <th>服务费(元)</th>
+                <th>清退金额(元)</th>
+                <th>管家姓名</th>
+                <th>推单公寓</th>
+                <th>订单状态</th>
+                <th>确认清退时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in orders.infoList" ng-class="{1: 'red', 0: ''}[order.biaohong]">
+                <td class="word-break"><a ng-href="#/order/{{order.orderId}}?flag=1" target="_blank">{{order.orderId}}</a></td>
+                <td><span class="time">{{order.qingtuiTime}}</span></td>
+                <td>{{order.userName}}-{{order.userPhone}}</td>
+                <td>{{order.rentTotal}}</td>
+                <td>{{order.feeMoney}}</td>
+                <td>{{order.payAmount}}</td>
+                <td>{{order.agentName}}</td>
+                <td>{{order.companyName}}</td>
+                <td>{{order.orderStatusDesc}}</td>
+                <td><span class="time">{{order.comfirmQingtuiTime}}</span></td>
+                <td class="opt">
+                    <a ng-href="#/order/{{order.orderId}}" target="_blank">详情</a>
+                    <!--<a href="javascript:;" ng-if="order.orderStatus=='6000'"  ng-click="repayConfirm($event,order)" style="color: red;">确认清退</a>-->
+                </td>
+                <!--<td></td>-->
+            </tr>
+        </tbody>
+    </table>
+    <pagination total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>
+    <!--<ul jr-pagination total-items="orders.totalCount" page="orders.pageNum" items-per-page="orders.pageSize"></ul>-->
 </div>

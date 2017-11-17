@@ -17,18 +17,18 @@ define([
         function($scope, $rootScope, $http, $modal, $stateParams, $filter, $state, $sce, FileUploader, FileItem, $timeout) {
 
 
-            //通过$.extend合并url新参数 新参数替换旧参数
+            //查询参数  通过$.extend合并url新参数 新参数替换旧参数
             $scope.queryParams = $.extend({
                 pageNum: 1,
                 pageSize: 10
             }, $stateParams);
 
-            //下拉菜单
+            //下拉菜单 查询选项
             $scope.queryOptions = {
                 orderStatus: [
-                    { name: '结算状态', value: '' },
-                    { name: '清退未结清', value: '6000' },
-                    { name: '清退已结清', value: '6100' }
+                    { name: '全部', value: '' },
+                    { name: '已发布', value: '6000' },
+                    { name: '待处理', value: '6100' }
                 ]
             };
             //请求数据
@@ -41,7 +41,10 @@ define([
             function getData(params) {
                 $http.get('/api/video/list', {
                     params: $.extend({}, params, { optDesc: '视频管理' })
-                })
+                }).success(function(data, status, headers, config) {
+                    $scope.orders = data.object;
+                    $scope.resCode = data.resCode; //当resCode=1时，显示“确认收款”
+                });
                 /*$http.get('/manage/repayingList-v4/json/get/getQingtuiPage', {
                     params: $.extend({}, params, { optDesc: '获取清退对账页面' })
                 }).success(function(data, status, headers, config) {
@@ -51,6 +54,24 @@ define([
             }
             //初始化执行
             getData($scope.queryParams);
+
+            //执行搜索方法
+            $scope.search = function(event) {
+                $scope.queryParams.pageNum = 1; //页码置为初始值
+                getData($scope.queryParams); //执行
+            };
+
+            //清空查询项
+            $scope.clearParams = function() {
+                var pageSize = $scope.queryParams.pageSize;
+                $scope.queryParams = {
+                    pageNum: 1,
+                    pageSize: pageSize
+                }
+            }
+
+
+
 
         }
     ]);
