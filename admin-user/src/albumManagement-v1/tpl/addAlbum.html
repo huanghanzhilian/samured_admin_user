@@ -1,0 +1,71 @@
+
+<div class="modal-header" style="width: 100%">
+    <a href="javascript:void(0)" ng-click="$dismiss('cancel')" class="modal-close"></a>
+    <h3 class="modal-title">专辑信息</h3>
+</div>
+    <div class="base-info-edit-main coop-flag">
+        <div class="clearfix">
+            <form name="searchForm" ng-submit="save($event)">
+                <ul style="overflow:visible">
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">专辑名称：</label>
+                        <div class="pull-left pro-name-input">
+                            <input class="form-control" name="isRequired" maxlength="60" type="text" value="" />
+                        </div>
+                        <div class="beyond-word pull-left"><span>17</span>/60字</div>
+                    </li>
+
+                    <li class="form-list clearfix">
+                        <label class="form-lable-style-03" for="opt-02">使用自定义封面：</label>
+                        <div class="pl-100">
+                            <div class="pl-30">
+                                <div class="clearfix share-pic-box">
+                                    <div class="pull-left share-btn-img">
+                                        <!--<input>-->
+                                        <div id="custom" class="img">
+                                            <i class="icon-upload-add"></i>
+                                            <img>
+                                        </div>
+                                    </div>
+                                    <div class="pull-left ml-10">
+                                        <p class="mt-25 color-aaacb8" style="line-height: 2">
+                                            建议尺寸比例为16：9；支持jpg、gif、png；<br>
+                                            大小不超过1M。
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="cover-ready mt-10" id="initpic" style="display: block;">
+                                    <div class="blk-img">
+                                        <img id="initImg" src="http://i1.letvimg.com/lc04_lejunew/201711/15/18/46/sr942ahnds9g184633.jpg" height="70" width="125" alt="" xsrc="yes">
+                                    </div>
+                                    <p class="color-aaacb8 mt-10">等待上传...</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">视频状态：</label>
+                        <div class="pull-left pro-name-input">
+                            <jr-dropdown-button id="companyProvinceCode" options="queryOptions.videoStatus" value="'1'"></jr-dropdown-button>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">视频简介：</label>
+                        <div class="pull-left pro-name-input">
+                            <textarea class="form-control videoDesc" maxlength="500" cols="20" rows="6" placeholder=""></textarea>
+                            <!-- <input class="form-control" name="isRequired" maxlength="60" type="text" value="" required/> -->
+                        </div>
+                        <div class="beyond-word pull-left mt-45"><span>0</span>/500字</div>
+                    </li>
+                </ul>
+                <div class="tips mt-20">“ * ” 为必填！</div>
+                <div class="info-edit-bottom pt-30">
+                    <input class="btn-ipt-blue ml-30" type="submit" id="btnBasicInfoSave" name="" value="保存">
+                </div>
+            </form>
+        </div>
+        
+    </div>

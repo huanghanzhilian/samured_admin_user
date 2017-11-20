@@ -13,7 +13,7 @@ define([
     'directive/ngThumb',
     'directive/fileModel',
 ], function(app, citiesModule) {
-    app.registerController('CtrlvideoManagementV1', ['$scope', '$rootScope', '$http', '$modal', '$stateParams', '$filter', '$state', '$sce', 'FileUploader', 'FileItem', '$timeout',
+    app.registerController('CtrlalbumManagementV1', ['$scope', '$rootScope', '$http', '$modal', '$stateParams', '$filter', '$state', '$sce', 'FileUploader', 'FileItem', '$timeout',
         function($scope, $rootScope, $http, $modal, $stateParams, $filter, $state, $sce, FileUploader, FileItem, $timeout) {
 
 
@@ -23,14 +23,7 @@ define([
                 pageSize: 10
             }, $stateParams);
 
-            //下拉菜单 查询选项
-            $scope.queryOptions = {
-                orderStatus: [
-                    { name: '全部', value: '' },
-                    { name: '已发布', value: '6000' },
-                    { name: '待处理', value: '6100' }
-                ]
-            };
+
             //请求数据
             $scope.orders = {
                 pageNum: 1,
@@ -39,9 +32,10 @@ define([
 
             //获取数据
             function getData(params) {
-                $http.get('/api/video/list', {
+                $http.get('/api/album/list', {
                     params: $.extend({}, params, { optDesc: '视频管理' })
                 }).success(function(data, status, headers, config) {
+                    console.log(data)
                     $scope.orders = data.object;
                     $scope.resCode = data.resCode;
                 });
@@ -69,6 +63,38 @@ define([
                     pageSize: pageSize
                 }
             }
+
+            //添加专辑
+            $scope.addAlbum=function(){
+                var addModal = $modal.open({
+                    template: __inline('tpl/addAlbum.html'),
+                    controller: 'addAlbumCtrl',
+                    windowClass:'screen',
+                })
+                addModal.result.then(function() {
+                    //getData($scope.queryParams);
+                })
+            }
+            //添加专辑控制器
+            app.registerController('addAlbumCtrl', ['$scope', '$modalInstance',
+                function($scope, $modalInstance) {
+                    $scope.errorInfo = "";
+                    $scope.submit = function() {
+                        var params = {
+                            checkResult: "1",
+                            optDesc: '确认打款'
+                        };
+                        $http.get("/manage/repayingList-v4/json/get/checkWithDraw", {
+                            params: params
+                        }).success(function(res) {
+                            $.modalAlert(res.message)
+                            $modalInstance.close()
+                        });
+                    }
+                }
+            ])
+
+
 
             //编辑
             $scope.editList = function(event, order) {

@@ -58,6 +58,49 @@ define(['app'], function(app) {
                     }
                 })
 
+                //专辑管理
+                .state('albumManagement', {
+                    url: '/albumManagement',
+                    abstract: true,
+                    templateUrl: emptyTplInherit
+                }).state('albumManagement.list', {
+                    url: '?pageNum',
+                    templateUrl: '/admin-user/albumManagement-v1/albumManagement-v1.html',
+                    controller: 'CtrlalbumManagementV1',
+                    resolve: {
+                        ctrl: $couchPotatoProvider.resolveDependencies(['/admin-user/albumManagement-v1/CtrlalbumManagementV1.js'])
+                    }
+                })
+                //专辑管理页
+                .state('albumManagementManage', {
+                    url: '/albumManagementManage',
+                    abstract: true,
+                    templateUrl: emptyTplInherit
+                }).state('albumManagementManage.list', {
+                    url: '?albumId&albumName&pageNum',
+                    templateUrl: '/admin-user/albumManagementManage-v1/albumManagementManage-v1.html',
+                    controller: 'CtrlalbumManagementManageV1',
+                    resolve: {
+                        ctrl: $couchPotatoProvider.resolveDependencies(['/admin-user/albumManagementManage-v1/CtrlalbumManagementManageV1.js'])
+                    }
+                })
+                //专辑管理页 添加视频页
+                .state('albumManagementAddVideo', {
+                    url: '/albumManagementAddVideo',
+                    abstract: true,
+                    templateUrl: emptyTplInherit
+                }).state('albumManagementAddVideo.list', {
+                    url: '?albumId&albumName&pageNum',
+                    templateUrl: '/admin-user/albumManagementAddVideo-v1/albumManagementAddVideo-v1.html',
+                    controller: 'CtrlalbumManagementAddVideoV1',
+                    resolve: {
+                        ctrl: $couchPotatoProvider.resolveDependencies(['/admin-user/albumManagementAddVideo-v1/CtrlalbumManagementAddVideoV1.js'])
+                    }
+                })
+
+
+
+
 
                 //进件审核
                 .state('order', {

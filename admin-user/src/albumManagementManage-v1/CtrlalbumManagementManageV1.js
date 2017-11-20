@@ -13,7 +13,7 @@ define([
     'directive/ngThumb',
     'directive/fileModel',
 ], function(app, citiesModule) {
-    app.registerController('CtrlvideoManagementV1', ['$scope', '$rootScope', '$http', '$modal', '$stateParams', '$filter', '$state', '$sce', 'FileUploader', 'FileItem', '$timeout',
+    app.registerController('CtrlalbumManagementManageV1', ['$scope', '$rootScope', '$http', '$modal', '$stateParams', '$filter', '$state', '$sce', 'FileUploader', 'FileItem', '$timeout',
         function($scope, $rootScope, $http, $modal, $stateParams, $filter, $state, $sce, FileUploader, FileItem, $timeout) {
 
 
@@ -22,7 +22,7 @@ define([
                 pageNum: 1,
                 pageSize: 10
             }, $stateParams);
-
+            console.log($scope.queryParams)
             //下拉菜单 查询选项
             $scope.queryOptions = {
                 orderStatus: [
@@ -39,7 +39,7 @@ define([
 
             //获取数据
             function getData(params) {
-                $http.get('/api/video/list', {
+                $http.get('/api/player/list', {
                     params: $.extend({}, params, { optDesc: '视频管理' })
                 }).success(function(data, status, headers, config) {
                     $scope.orders = data.object;

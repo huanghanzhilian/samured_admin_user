@@ -1,6 +1,10 @@
-<link rel="stylesheet" href="videoManagement-v1.less?__inline" />
+<link rel="stylesheet" href="albumManagementManage-v1.less?__inline" />
 <div class="gh-create-item">
-    <h5 class="pull-left gh-item-title">视频管理</h5>
+    <h5 class="pull-left gh-item-title">专辑管理>{{queryParams.albumName}}</h5>
+    <a class="pull-right gh-btn-title" id="openFileSelectBox" ui-sref="albumManagementAddVideo.list({albumId:{{queryParams.albumId}},albumName:'{{queryParams.albumName}}'})">
+        <span class="add">+</span>
+        <span class="text">添加视频</span>
+    </a>
 </div>
 <div class="videoManagement_container">
     <div class="block clearfix">
@@ -58,7 +62,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="order in orders.infoList" ng-class="{1: 'red', 0: ''}[order.biaohong]">
+            <tr ng-if="orders.infoList.length" ng-repeat="order in orders.infoList" ng-class="{1: 'red', 0: ''}[order.biaohong]">
                 <td class="word-break">
                     <input type="checkbox" ng-click="acheck(order,!order.checked)" ng-checked="order.checked" class="icheckbox_square-blue" style="margin-right: 10px;">
                     <div class="video-item clearfix">
@@ -77,25 +81,24 @@
                 <td>{{order.addTime}}</td>
                 <td><span class="time">{{order.completeTime}}</span></td>
                 <td class="opt">
-                    <a href="javascript:;" ng-click="editList($event,order)">编辑</a><em>|</em>
+                    <!-- <a href="javascript:;" ng-click="editList($event,order)">编辑</a> -->
                     <a href="javascript:;"  ng-click="deleteConfirm($event,order)" style="color: red;">删除</a>
                 </td>
                 <!--<td></td>-->
             </tr>
-            <tr>
+            <tr ng-if="orders.infoList.length">
                 <td colspan="7">
                     <input type="checkbox" class="icheckbox_square-blue" style="margin-right: 10px;" ng-click="change(!allchecked)" ng-checked="allchecked">
                     <button class="btn btn-default" type="button" ng-click="publishall()">删除</button>
                 </td>
             </tr>
-            <!-- <tr>
-                <td>
-                    <input type="checkbox" class="icheckbox_square-blue" style="margin-right: 10px;" ng-click="change(!allchecked)" ng-checked="allchecked">
-                    <button class="btn btn-default" type="button" ng-click="exportall()">导出</button>
+            <tr ng-if="!orders.infoList.length">
+                <td colspan="8" style="padding-left: 0px!important;">
+                    <div class="text-center mt-40 mb-40">暂无数据</div>
                 </td>
-            </tr> -->
+            </tr>
         </tbody>
     </table>
-    <pagination total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>
+    <pagination ng-if="orders.infoList.length" total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>
     <!--<ul jr-pagination total-items="orders.totalCount" page="orders.pageNum" items-per-page="orders.pageSize"></ul>-->
 </div>
