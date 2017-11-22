@@ -1,0 +1,93 @@
+<style >.video-item{padding:0;min-width:332px}.video-item .video-detail{width:196px;padding-left:10px;overflow:hidden}.icheckbox_square-blue{position:absolute;left:17px;top:50%;margin-top:-11px!important}table td:first-child{position:relative;padding-left:54px!important}.screen .modal-dialog{width:100%;height:100%;background:#fff;opacity:.95;overflow:auto;margin:0;position:absolute;top:0;left:0;right:0;bottom:0}.screen .modal-content{box-shadow:none;margin-left:220px;position:relative;overflow:hidden;border:0}ul,dl,li,ol{list-style-type:none;margin:0;padding:0}.tab-content{min-height:800px}.base-info-edit-main{padding:10px 0 10px 20px!important;width:auto!important}.form-list{margin-top:20px!important}.form-list .beyond-word{line-height:34px;color:#aaacb8;font-size:12px;padding-left:10px}.form-list .form-lable-style{width:110px;height:34px;line-height:34px;text-align:right;color:#33333c;margin-bottom:0;margin-right:20px!important;font-weight:400}.form-list .before-xinghao:before{content:"* ";color:#ff3555}.form-list .pro-name-input{width:380px}.form-list .pro-name-input input{width:100%}.tips{color:#ff4b65;padding-left:130px;margin-top:20px}.btn-ipt-blue{color:#208ac3;border:1px solid #208ac3;width:140px;height:36px;box-sizing:border-box;background-color:#fff;cursor:pointer;text-align:center;outline:0;-o-border-radius:18px;border-radius:18px}.btn-ipt-blue:hover{color:#fff;background-color:#208ac3}.videoDesc{width:100%;height:72px!important;resize:none}.form-lable-style-03{width:110px;height:34px;line-height:34px;text-align:right;color:#33333c;margin-bottom:0;margin-right:20px!important;font-weight:400}.share-pic-box{height:70px}.share-pic-box .share-btn-img{width:125px!important;height:70px!important;position:relative}.share-pic-box .share-btn-img .img{cursor:pointer;position:absolute;width:100%;height:100%;left:0;top:0;line-height:100px;background:#ededf1;text-align:center;z-index:2;line-height:70px!important}.share-pic-box .share-btn-img .img .icon-upload-add{width:40px;height:40px;background-image:url(http://i2.letvimg.com/lc06_lecloud/201611/15/14/20/common/common/add-upload.png);vertical-align:middle;display:inline-block;background-size:cover;line-height:70px!important}.blk-img{position:relative;width:125px;height:70px}</style>
+<div class="gh-create-item">
+    <h5 class="pull-left gh-item-title">专辑管理</h5>
+    <a class="pull-right gh-btn-title" id="openFileSelectBox" href="javascript:void(0);" ng-click="addAlbum()">
+        <span class="add">+</span>
+        <span class="text">新建专辑</span>
+    </a>
+</div>
+<div class="videoManagement_container">
+    <div class="block clearfix">
+        <form name="searchForm" novalidate ng-submit="search($event)">
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.userKey" style="width: 150px;" jr-placeholder="专辑名称" />
+            </div>
+            <div class="list-filter-col">
+                <input type="text" class="form-control" ng-model="queryParams.agentKey" jr-placeholder="专辑ID" />
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="发布时间" time="queryParams.qingtuiStartTime" style="width: 140px;"></jr-datepicker>
+            </div>
+            <div class="list-filter-col text">
+                到
+            </div>
+            <div class="list-filter-col">
+                <jr-datepicker placeholder="发布时间" time="queryParams.qingtuiEndTime" style="width: 140px;"></jr-datepicker>
+            </div>
+            <div class="pos-rb">
+                <div class="list-filter-col">
+                    <button class="btn btn-primary" type="submit"><i class="icon icon-search"></i>查找</button>
+                </div>
+                <div class="list-filter-col">
+                    <button class="btn btn-default" type="button" ng-click="clearParams()">清空查询项</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <colgroup>
+            <col width="2%">
+            <col width="9%">
+            <col width="9%">
+            <col width="10%">
+            <col width="8%">
+            <col width="22%">
+            <col width="22%">
+            <col width="18%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th></th>
+                <th>专辑ID</th>
+                <th>专辑名称</th>
+                <th>视频数量</th>
+                <th>总时长</th>
+                <th>创建时间</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-if="orders.infoList.length" ng-repeat="order in orders.infoList" ng-class="{1: 'red', 0: ''}[order.biaohong]">
+                <td>
+                    <input type="checkbox" ng-click="acheck(order,!order.checked)" ng-checked="order.checked" class="icheckbox_square-blue" style="margin-right: 10px;">
+                </td>
+                <td class="word-break">{{order.albumId}} </td>
+                <td><span class="time">{{order.albumName}}</span></td>
+                <td>{{order.videoSum}}</td>
+                <td>{{order.videoDurations}}</td>
+                <td>{{order.addTime}}</td>
+                <td><span class="time">{{order.completeTime}}</span></td>
+                <td class="opt">
+                    <a ui-sref="albumManagementManage.list({albumId:{{order.albumId}},albumName:'{{order.albumName}}'})">管理</a><em>|</em>
+                    <a href="javascript:;" ng-click="addAlbum()">编辑</a><em>|</em>
+                    <a href="javascript:;" ng-click="deleteConfirm($event,order)" style="color: red;">删除</a>
+                </td>
+                <!--<td></td>-->
+            </tr>
+            <tr ng-if="orders.infoList.length">
+                <td colspan="8">
+                    <input type="checkbox" class="icheckbox_square-blue" style="margin-right: 10px;" ng-click="change(!allchecked)" ng-checked="allchecked">
+                    <button class="btn btn-default" type="button" ng-click="exportall()">删除1</button>
+                </td>
+            </tr>
+            <tr ng-if="!orders.infoList.length">
+                <td colspan="8" style="padding-left: 0px!important;">
+                    <div class="text-center mt-40 mb-40">暂无数据</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination ng-if="orders.infoList.length" total-items="orders.totalCount" page="orders.pageNum" max-size="9"></pagination>
+    <!--<ul jr-pagination total-items="orders.totalCount" page="orders.pageNum" items-per-page="orders.pageSize"></ul>-->
+</div>

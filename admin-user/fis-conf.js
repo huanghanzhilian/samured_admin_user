@@ -8,8 +8,8 @@ var isPublish = ['sandbox','publish'].indexOf(process.title.split(/\s/)[3]) != -
 
 //如果是生产模式
 if (isPublish) {
-    staticsPath = '/_released/resources/static-mana';
-    pagePrePath = '/_released/views/static-mana';
+    staticsPath = '/_released/resources/admin-user';
+    pagePrePath = '/_released/views/admin-user';
 }
 
 var MACHINE_MAP = {

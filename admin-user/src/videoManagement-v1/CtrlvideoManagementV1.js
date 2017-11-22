@@ -75,7 +75,7 @@ define([
                 var addModal = $modal.open({
                     template: __inline('tpl/editItem.html'),
                     controller: 'AddCtrl',
-                    windowClass:'screen',
+                    windowClass: 'screen',
                     resolve: {
                         order: function() {
                             return angular.copy(order);
@@ -91,6 +91,56 @@ define([
                 function($scope, $modalInstance, order) {
                     $scope.order = order;
                     $scope.errorInfo = "";
+
+
+                    //下拉菜单 查询选项
+                    $scope.queryOptionsq = {
+                        orderStatus: [{
+                            name: '--请选择--',
+                            value: ''
+                        }, {
+                            name: '已发布',
+                            value: '1'
+                        }, {
+                            name: '待处理',
+                            value: '-1'
+                        }],
+                        videolebel: [{
+                            value: '',
+                            name: '--请选择--',
+                        }, {
+                            value: '1',
+                            name: '宣传片'
+                        }, {
+                            value: '2',
+                            name: '大型活动'
+                        }, {
+                            value: '3',
+                            name: '评测'
+                        }],
+                    };
+
+                    $scope.fiseOrders={};
+                    //获得当前编辑视频信息
+                    var params = {
+                        videoId: order.videoId
+                    };
+
+                    $http.get("/api/video/basic", {
+                        params: params
+                    }).success(function(res) {
+                        $scope.fiseOrders=res.object;
+                        console.log($scope.fiseOrders)
+                        // $.modalAlert('基本信息保存成功！')
+                        // $modalInstance.close()
+                    });
+
+                    //保持信息
+                    $scope.save=function(){
+                        console.log($scope.fiseOrders)
+                        $.modalAlert('基本信息保存成功！')
+                        $modalInstance.close()
+                    }
                     $scope.submit = function() {
                         var params = {
                             detailId: order.detailId,
@@ -108,12 +158,56 @@ define([
             ])
 
             //删除数据
-            $scope.deleteConfirm=function(event,order){
+            $scope.deleteConfirm = function(event, order) {
                 $.modalConfirm("你确认要删除吗？", function() {
                     $.modalAlert('删除成功')
                 })
             }
 
+
+
+            /**
+             * 多选
+             */
+            $scope.allchecked = false;
+            //单个检查
+            $scope.acheck = function(order, checked) {
+                order.checked = checked
+                var allchecked = true;
+                $($scope.orders.infoList).each(function(i, item) {
+                    if (!item.checked) {
+                        allchecked = false
+                    }
+                })
+                $scope.allchecked = allchecked
+            }
+            //全选
+            $scope.change = function(allchecked) {
+                $scope.allchecked = allchecked
+                $($scope.orders.infoList).each(function(i, item) {
+                    item.checked = $scope.allchecked
+                })
+            }
+            //全选导出
+            $scope.exportall = function() {
+                var arrId = []
+                $($scope.orders.infoList).each(function(i, item) {
+                    if (item.checked) {
+                        arrId.push(item.videoId)
+                    }
+                })
+
+                if (arrId.length == 0) {
+                    $.modalAlert('您还没有选择！')
+                } else {
+                    $.modalConfirm("你确认要删除吗？", function() {
+                        console.log(arrId)
+                        //window.open('/manage/repayingList-v4/json/export/exportConfirmPayMoney/loanList_' + (new Date()).getTime() + '.xls?payCheckIdStr=' + arrId.join(","));
+                        $.modalAlert('删除成功')
+                    })
+
+                }
+            }
 
 
 

@@ -3,6 +3,8 @@
     "object": {
         "infoList": [
             {
+                "videoId":1,
+                "videoName":"150716YesMen_desk",
                 "addTime":"2017-11-16 19:45:35",
                 "completeTime":"2017-11-16 19:45:44",
                 "statusName":"已发布",
@@ -10,6 +12,8 @@
                 "userCategory1Name":null
             },
             {
+                "videoId":2,
+                "videoName":"test",
                 "addTime":"2017-11-16 19:45:35",
                 "completeTime":"2017-11-16 19:45:44",
                 "statusName":"已发布",

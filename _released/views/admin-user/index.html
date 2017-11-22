@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<!-- $Id: index.html 22321 2017-01-10 03:25:00Z caoke $ -->
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>用户后台 - SAMURED</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/admin-user/_common/img/favicon.ico" />
+    <link rel="stylesheet" href="/admin-user/dep/bootstrap_3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/admin-user/_common/common.css?15113271" />
+    <!--[if lt IE 9]>
+        <script src="/admin-user/dep/es5-shim/es5-shim.min.js"></script>
+        <script src="/admin-user/dep/es5-sham/es5-sham.min.js"></script>
+        <![endif]-->
+    <script src="/admin-user/_common/libs/require.js/2.1.11/require.js"></script>
+    <script src="/admin-user/_common/libs/jquery/1.10.2/jquery.js"></script>
+    <script src="/admin-user/_service/md5.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+            <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+            <script src="/admin-user/_directive/directive-ie.js?15113271"></script>
+        <![endif]-->
+</head>
+
+<body ng-controller="CtrlApp">
+    <div class="vacation-info vacation-chorme" ng-show="vacation" style="display: none;"><i></i>本平台仅适用于chrome浏览器，为了保证您的正常使用，请您下载chrome浏览器。<a class="close" href="javascript:;" ng-click="vacation=false">X</a></div>
+    <div class="body">
+        <div class="g-sd1">
+            <div class="toplogo">
+                <a href="javascript:void(0);" target="_blank" title="月付后台-{{userInfo.companyName}}" id="top-logo">
+                       <img ng-src="{{userInfo.companyLogo||'/admin-user/_common/nimg/logo-w.png?15113271'}}" class="logo" alt="logo"  />
+                       <div class="logo-txt">用户管理系统</div>
+                   </a>
+            </div>
+            <ul class="side " id="side">
+                <!-- <li class="expand">
+                    <a ng-show="canAccess(',user,') || canAccess(',user/normal,') || canAccess(',user/overdue,') || canAccess(',user/clean,')" class="dpdtoggle" href="#/user?type=1">
+                        <i class="small-icon icon-user"></i>业务管理<i class="arrow"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li ng-if="canAccess(',order,')" ng-class="{active: $state.includes('order.list')}"><a href="#/order">进件审核</a></li>
+                        <li ng-if="canAccess(',user,')" ng-class="{active: $state.includes('user')}"><a href="#/user">概览</a></li>
+                     </ul>
+                </li>
+                <li class="expand">
+                    <a ng-show="canAccess(',repayingList,')" class="dpdtoggle" >
+                        <i class="small-icon icon-agent"></i>财务管理<i class="arrow"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li ng-if="canAccess(',withDraw,')"  ng-class="{active: $state.includes('withDraw.list')}"><a href="#/withDraw" >视频管理</a></li>
+                        <li ng-if="canAccess(',repayingList,')"  ng-class="{active: $state.includes('repayingList.list')}"><a href="#/repayingList" >专辑管理</a></li>
+                        <li ng-if="canAccess(',loanList,')"  ng-class="{active: $state.includes('loanList.list')}"><a href="#/loanList" >频道管理</a></li>
+                    </ul>
+                </li> -->
+                <li class="expand">
+                    <ul class="submenu">
+                        <li ng-if="canAccess(',videoUpload,')" ng-class="{active: $state.includes('videoUpload.list')}"><a href="#/videoUpload">视频上传</a></li>
+                        <li ng-if="canAccess(',videoManagement,')" ng-class="{active: $state.includes('videoManagement.list')}"><a href="#/videoManagement">视频管理</a></li>
+                        <li ng-if="canAccess(',albumManagement,')" ng-class="{active: $state.includes('albumManagement.list')}"><a href="#/albumManagement">专辑管理</a></li>
+                        <li ng-if="canAccess(',loanList,')" ng-class="{active: $state.includes('loanList.list')}"><a href="#/loanList">电视剧管理</a></li>
+                        <li ng-if="canAccess(',userView,')" ng-class="{active: $state.includes('userView.list')}"><a href="#/userView">我的平台</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="header-info">
+                <a href="javascript:;" class="user-name" ng-click="modifyPassword($event)"><span></span>修改密码</a>
+                <a href="/manage/public/view/get/logout" class="logout"><span></span>退出</a>
+            </div>
+        </div>
+        <div class="g-mn1">
+            <div class="g-mn1c">
+                <div ui-view class="body-view" id="body-view"></div>
+            </div>
+        </div>
+        <div class="loading" ng-if="loading">loading……</div>
+    </div>
+    <script>
+    var jrVersionStr = '15113271';
+    require.config({
+        urlArgs: jrVersionStr
+    });
+    //统计
+    var _czc = []
+    _czc.logSend = function() {}
+    </script>
+    <script src="/admin-user/main.js?15113271"></script>
+</body>
+
+</html>

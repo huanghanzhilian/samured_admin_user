@@ -1,0 +1,17 @@
+{
+    "success": true,
+    "object": {
+        "videoId":1,
+        "videoName":"150716YesMen_desk",
+        "addTime":"2017-11-16 19:45:35",
+        "completeTime":"2017-11-16 19:45:44",
+        "userCategory":"",
+        "statusName":"已发布",
+        "status":"",
+        "videoDuration":"00:10:54",
+        "userCategory1Name":null,
+        "tag":"888 999",
+        "videoDesc":"我是测试简介"
+    },
+    "code": "0"
+}

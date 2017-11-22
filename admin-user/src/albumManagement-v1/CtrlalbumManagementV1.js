@@ -141,6 +141,50 @@ define([
             }
 
 
+            /**
+             * 多选
+             */
+            $scope.allchecked = false;
+            //单个检查
+            $scope.acheck = function(order, checked) {
+                order.checked = checked
+                var allchecked = true;
+                $($scope.orders.infoList).each(function(i, item) {
+                    if (!item.checked) {
+                        allchecked = false
+                    }
+                })
+                $scope.allchecked = allchecked
+            }
+            //全选
+            $scope.change = function(allchecked) {
+                $scope.allchecked = allchecked
+                $($scope.orders.infoList).each(function(i, item) {
+                    item.checked = $scope.allchecked
+                })
+            }
+            //全选导出
+            $scope.exportall = function() {
+                var arrId = []
+                $($scope.orders.infoList).each(function(i, item) {
+                    if (item.checked) {
+                        arrId.push(item.videoId)
+                    }
+                })
+
+                if (arrId.length == 0) {
+                    $.modalAlert('您还没有选择！')
+                } else {
+                    $.modalConfirm("你确认要删除吗？", function() {
+                        console.log(arrId)
+                        //window.open('/manage/repayingList-v4/json/export/exportConfirmPayMoney/loanList_' + (new Date()).getTime() + '.xls?payCheckIdStr=' + arrId.join(","));
+                        $.modalAlert('删除成功')
+                    })
+
+                }
+            }
+
+
 
 
         }

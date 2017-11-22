@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="userView-v1.less?__inline" />
+<div class="gh-create-item">
+    <h5 class="pull-left gh-item-title">我的平台</h5>
+    <a class="pull-right gh-btn-title" id="openFileSelectBox" ng-click="edit()">
+        <span class="add"></span>
+        <span class="text">编辑</span>
+    </a>
+</div>
+<div class="videoManagement_container">
+    <div class="base-info-edit-main coop-flag">
+        <div class="clearfix">
+            <form name="searchForm" ng-submit="save($event)">
+                <ul style="overflow:visible">
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">中文名称：</label>
+                        <div>
+                            <div class="pull-left pro-name-input">
+                                <input ng-if="isEditStatus" class="form-control" name="isRequired" maxlength="60" type="text" ng-model="orders.username" />
+                                <p ng-if="!isEditStatus">{{orders.username}}</p>
+                            </div>
+                            <div ng-if="isEditStatus" class="beyond-word pull-left"><span>17</span>/60字</div>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">繁中名称：</label>
+                        <div>
+                            <div class="pull-left pro-name-input">
+                                <input ng-if="isEditStatus" class="form-control" name="isRequired" maxlength="60" type="text" ng-model="orders.username1" />
+                                <p ng-if="!isEditStatus">{{orders.username1}}</p>
+                            </div>
+                            <div ng-if="isEditStatus" class="beyond-word pull-left"><span>17</span>/60字</div>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">英文名称：</label>
+                        <div>
+                            <div class="pull-left pro-name-input">
+                                <input ng-if="isEditStatus" class="form-control" name="isRequired" maxlength="60" type="text" ng-model="orders.username2" />
+                                <p ng-if="!isEditStatus">{{orders.username2}}</p>
+                            </div>
+                            <div ng-if="isEditStatus" class="beyond-word pull-left"><span>17</span>/60字</div>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">日文名称：</label>
+                        <div>
+                            <div class="pull-left pro-name-input">
+                                <input ng-if="isEditStatus" class="form-control" name="isRequired" maxlength="60" type="text" ng-model="orders.username3" />
+                                <p ng-if="!isEditStatus">{{orders.username3}}</p>
+                            </div>
+                            <div ng-if="isEditStatus" class="beyond-word pull-left"><span>17</span>/60字</div>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="form-lable-style-03" for="opt-02">平台大图：</label>
+                        <div class="pl-100">
+                            <div class="pl-30">
+                                <div class="clearfix share-pic-box">
+                                    <div class="pull-left share-btn-img">
+                                        <!--<input>-->
+                                        <div id="custom" class="img">
+                                            <i class="icon-upload-add"></i>
+                                            <!-- <input type="file" accept="image/*" class="filetop" file-model="fileToUpload"> -->
+                                            <input ng-if="isEditStatus" type="file" accept="image/*" class="filetop" onchange="angular.element(this).scope().img_upload(this.files)">
+                                        </div>
+                                    </div>
+                                    <div class="pull-left ml-10">
+                                        <p class="mt-25 color-aaacb8" style="line-height: 2">
+                                            建议尺寸比例为16：9；支持jpg、gif、png；
+                                            <br> 大小不超过1M。
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-if="thumb" class="cover-ready mt-10" id="initpic" style="display: block;">
+                                    <div class="blk-img">
+                                        <img id="initImg" ng-src="{{thumb}}" height="70" width="125" alt="">
+                                        {{guid}}
+                                    </div>
+                                    <!-- <p class="color-aaacb8 mt-10">等待上传...</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="form-list clearfix">
+                        <label class="form-lable-style-03" for="opt-02">平台预览图：</label>
+                        <div class="pl-100">
+                            <div class="pl-30">
+                                <div class="clearfix share-pic-box">
+                                    <div class="pull-left share-btn-img">
+                                        <!--<input>-->
+                                        <div id="custom" class="img">
+                                            <i class="icon-upload-add"></i>
+                                            <!-- <input type="file" accept="image/*" class="filetop" file-model="fileToUpload"> -->
+                                            <input ng-if="isEditStatus" type="file" accept="image/*" class="filetop" onchange="angular.element(this).scope().img_uploada(this.files)">
+                                        </div>
+                                    </div>
+                                    <div class="pull-left ml-10">
+                                        <p class="mt-25 color-aaacb8" style="line-height: 2">
+                                            建议尺寸比例为16：9；支持jpg、gif、png；
+                                            <br> 大小不超过1M。
+                                        </p>
+                                    </div>
+                                </div>
+                                <div ng-if="thumba" class="cover-ready mt-10" id="initpic" style="display: block;">
+                                    <div class="blk-img">
+                                        <img ng-src="{{thumba}}" height="70" width="125" alt="">
+                                        {{guida}}
+                                    </div>
+                                    <!-- <p class="color-aaacb8 mt-10">等待上传...</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">游戏类型：</label>
+                        <div class="pull-left pro-name-input">
+                            <jr-dropdown-button id="companyProvinceCode" options="queryOptions.orderStatus" value="queryParams.orderStatus"></jr-dropdown-button>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">厂商：</label>
+                        <div class="pull-left pro-name-input">
+                            <jr-dropdown-button id="companyProvinceCode" options="queryOptions.orderStatus" value="queryParams.orderStatus"></jr-dropdown-button>
+                        </div>
+                    </li>
+
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">平台状态：</label>
+                        <div class="pull-left pro-name-input">
+                            <jr-dropdown-button id="companyProvinceCode" options="queryOptions.orderStatus" value="queryParams.orderStatus"></jr-dropdown-button>
+                        </div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">平台标签：</label>
+                        <div class="pull-left pro-name-input">
+                            <input class="form-control" name="isRequired" maxlength="60" type="text" value="" required/>
+                        </div>
+                        <div class="beyond-word pull-left">最多5个标签，每个标签最多10个字符，标签之间用空格间隔</div>
+                    </li>
+                    <li class="form-list clearfix">
+                        <label class="pull-left mr-20 form-lable-style before-xinghao hover" for="">视频简介：</label>
+                        <div class="pull-left pro-name-input">
+                            <textarea class="form-control videoDesc" maxlength="500" cols="20" rows="6" placeholder=""></textarea>
+                            <!-- <input class="form-control" name="isRequired" maxlength="60" type="text" value="" required/> -->
+                        </div>
+                        <div class="beyond-word pull-left mt-45"><span>0</span>/500字</div>
+                    </li>
+                </ul>
+<!--                 <div class="tips mt-20">“ * ” 为必填！</div> -->
+                <div class="info-edit-bottom pt-30" ng-if="isEditStatus">
+                    <input class="btn-ipt-blue ml-30" type="submit" id="btnBasicInfoSave" name="" value="保存">
+                    <input class="btn-ipt-blue ml-30" type="button" ng-click="cancel()" name="" value="取消">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

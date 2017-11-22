@@ -66,8 +66,8 @@
                             <img src="http://i0.letvimg.com/lc08_yunzhuanma/201711/16/19/47/58803700a232c7ae2243f0c16d583428_v2_NDg5ODAwNDcw/thumb/2.jpg" height="70" width="125" alt="">
                         </div>
                         <dl class="video-detail">
-                            <dt class="videoName" title="aaaaaaa">aaaaaaa</dt>
-                            <dd>视频ID：47692245</dd>
+                            <dt class="videoName" title="aaaaaaa">{{order.videoName}}</dt>
+                            <dd>视频ID：{{order.videoId}}</dd>
                         </dl>
                     </div>
                 </td>
@@ -85,7 +85,7 @@
             <tr>
                 <td colspan="7">
                     <input type="checkbox" class="icheckbox_square-blue" style="margin-right: 10px;" ng-click="change(!allchecked)" ng-checked="allchecked">
-                    <button class="btn btn-default" type="button" ng-click="publishall()">删除</button>
+                    <button class="btn btn-default" type="button" ng-click="exportall()">删除</button>
                 </td>
             </tr>
             <!-- <tr>

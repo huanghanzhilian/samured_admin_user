@@ -98,6 +98,20 @@ define(['app'], function(app) {
                     }
                 })
 
+                //我的平台
+                .state('userView', {
+                    url: '/userView',
+                    abstract: true,
+                    templateUrl: emptyTplInherit
+                }).state('userView.list', {
+                    url: '?albumId&albumName&pageNum',
+                    templateUrl: '/admin-user/userView-v1/userView-v1.html',
+                    controller: 'CtrluserViewV1',
+                    resolve: {
+                        ctrl: $couchPotatoProvider.resolveDependencies(['/admin-user/userView-v1/CtrluserViewV1.js'])
+                    }
+                })
+
 
 
 
